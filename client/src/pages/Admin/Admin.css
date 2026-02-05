@@ -1,0 +1,387 @@
+.admin-screen {
+  min-height: 100vh;
+  padding-bottom: 80px;
+  background: var(--background);
+  animation: fadeIn 0.4s ease-out;
+}
+
+.admin-content {
+  padding: 24px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 24px;
+}
+
+.admin-section h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.admin-form input,
+.admin-form select {
+  padding: 14px 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.admin-search-container {
+  margin-bottom: 24px;
+}
+
+.admin-users-count {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--white-icon);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.admin-users-count span {
+  color: var(--sec-light);
+  font-weight: 600;
+}
+
+.admin-search-input {
+  width: 100%;
+  padding: 14px 16px;
+  padding-left: 48px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
+  position: relative;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23cbd5e1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cpath d='M21 21l-4.35-4.35'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 16px center;
+  background-size: 16px;
+}
+
+.admin-search-input:focus {
+  outline: none;
+  border-color: var(--sec);
+  background-color: rgba(0, 202, 81, 0.1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2360a5fa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cpath d='M21 21l-4.35-4.35'%3E%3C/path%3E%3C/svg%3E");
+  box-shadow: 0 0 0 3px rgba(0, 202, 81, 0.15);
+}
+
+.admin-search-input::placeholder {
+  color: var(--white-icon);
+  opacity: 0.6;
+}
+
+.admin-form input:focus,
+.admin-form select:focus {
+  outline: none;
+  border-color: var(--sec);
+  background: linear-gradient(135deg, rgba(0, 202, 81, 0.1) 0%, rgba(0, 202, 81, 0.05) 100%);
+  box-shadow: 0 0 0 3px rgba(0, 202, 81, 0.15);
+}
+
+.admin-form button {
+  padding: 14px 24px;
+  background: linear-gradient(135deg, var(--sec) 0%, var(--sec-dark) 50%, var(--cyan) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 202, 81, 0.4), 0 0 15px rgba(0, 202, 81, 0.2);
+  letter-spacing: -0.01em;
+}
+
+.admin-form button:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 6px 24px rgba(0, 202, 81, 0.5), 0 0 25px rgba(0, 202, 81, 0.3);
+  background: linear-gradient(135deg, var(--sec-light) 0%, var(--sec) 50%, var(--cyan-light) 100%);
+}
+
+.admin-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.admin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-loading,
+.admin-empty {
+  text-align: center;
+  padding: 24px 16px;
+  color: var(--white-icon);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.admin-item {
+  background: var(--background-tertiary);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(0, 202, 81, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeIn 0.4s ease-out;
+}
+
+.admin-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 202, 81, 0.25), 0 0 20px rgba(0, 202, 81, 0.15);
+  border-color: rgba(0, 202, 81, 0.4);
+}
+
+.admin-item span {
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.admin-actions button {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(0, 202, 81, 0.2) 0%, rgba(0, 202, 81, 0.1) 100%);
+  color: var(--sec-light);
+  border: 1px solid rgba(0, 202, 81, 0.4);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 202, 81, 0.2);
+}
+
+.admin-actions button:hover {
+  background: linear-gradient(135deg, rgba(0, 202, 81, 0.3) 0%, rgba(0, 202, 81, 0.2) 100%);
+  border-color: rgba(0, 202, 81, 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 202, 81, 0.3), 0 0 10px rgba(0, 202, 81, 0.2);
+}
+
+.admin-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.admin-action-delete {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.05) 100%) !important;
+  color: #ef4444 !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+.admin-action-delete:hover {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(239, 68, 68, 0.15) 100%) !important;
+  border-color: rgba(239, 68, 68, 0.5) !important;
+}
+
+.admin-balance-button {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(0, 202, 81, 0.2) 0%, rgba(0, 202, 81, 0.1) 100%);
+  color: var(--sec-light);
+  border: 1px solid rgba(0, 202, 81, 0.4);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 202, 81, 0.2);
+}
+
+.admin-balance-button:hover {
+  background: linear-gradient(135deg, rgba(0, 202, 81, 0.3) 0%, rgba(0, 202, 81, 0.2) 100%);
+  border-color: rgba(0, 202, 81, 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 202, 81, 0.3), 0 0 10px rgba(0, 202, 81, 0.2);
+}
+
+.balance-type-button {
+  flex: 1;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: var(--white-icon);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.balance-type-button.active {
+  background: linear-gradient(135deg, var(--sec) 0%, var(--sec-dark) 100%);
+  color: var(--white);
+  border-color: var(--sec);
+  box-shadow: 0 4px 12px rgba(0, 202, 81, 0.4), 0 0 10px rgba(0, 202, 81, 0.2);
+}
+
+.balance-type-button:hover {
+  background: linear-gradient(135deg, rgba(0, 202, 81, 0.15) 0%, rgba(0, 202, 81, 0.1) 100%);
+  border-color: rgba(0, 202, 81, 0.4);
+  color: var(--sec-light);
+}
+
+.admin-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.admin-modal-content {
+  background: var(--background-tertiary);
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 400px;
+  width: 90%;
+  border: 1px solid rgba(0, 202, 81, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 202, 81, 0.15);
+  animation: slideIn 0.3s ease-out;
+}
+
+.admin-modal-content h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+
+.admin-modal-content input {
+  width: 100%;
+  padding: 14px 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 14px;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.admin-modal-content input:focus {
+  outline: none;
+  border-color: var(--sec);
+  background: linear-gradient(135deg, rgba(0, 202, 81, 0.1) 0%, rgba(0, 202, 81, 0.05) 100%);
+  box-shadow: 0 0 0 3px rgba(0, 202, 81, 0.15);
+}
+
+.admin-modal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.admin-modal-actions button {
+  flex: 1;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.admin-modal-actions button:first-child {
+  background: linear-gradient(135deg, var(--sec) 0%, var(--sec-dark) 50%, var(--cyan) 100%);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(0, 202, 81, 0.4), 0 0 15px rgba(0, 202, 81, 0.2);
+}
+
+.admin-modal-actions button:first-child:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 24px rgba(0, 202, 81, 0.5), 0 0 25px rgba(0, 202, 81, 0.3);
+  background: linear-gradient(135deg, var(--sec-light) 0%, var(--sec) 50%, var(--cyan-light) 100%);
+}
+
+.admin-modal-actions button:last-child {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-modal-actions button:last-child:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
+  transform: translateY(-1px);
+}
+
+.admin-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.pagination-page {
+  padding: 10px 16px;
+  background: var(--background-tertiary);
+  border: 1px solid rgba(0, 202, 81, 0.15);
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 44px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pagination-page:hover {
+  background: linear-gradient(135deg, rgba(0, 202, 81, 0.15) 0%, rgba(0, 202, 81, 0.1) 100%);
+  border-color: rgba(0, 202, 81, 0.4);
+  transform: translateY(-1px);
+  color: var(--sec-light);
+}
+
+.pagination-page.active {
+  background: linear-gradient(135deg, var(--sec) 0%, var(--sec-dark) 100%);
+  border-color: var(--sec);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(0, 202, 81, 0.4), 0 0 8px rgba(0, 202, 81, 0.2);
+}

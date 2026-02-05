@@ -1,0 +1,212 @@
+/**
+ * Глобальные стили приложения
+ * в стиле Stake
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #0c1d29;
+  --background-secondary: #071824;
+  --background-tertiary: #213743;
+  --sec: #00ca51;
+  --sec-light: #69e244;
+  --sec-dark: #3c8725;
+  --accent-orange: #fb6308;
+  --accent-orange-light: #ff8533;
+  --cyan: #4fc3cf;
+  --cyan-light: #46c6f1;
+  --white: #f7fafc;
+  --white-soft: #e2e8f0;
+  --white-icon: #cbd5e1;
+  --white-icon-tr: #94a3b8;
+  --gray-dark: #263742;
+  --gray-medium: #334552;
+  --gray-light: #395565;
+  --gray-lighter: #557086;
+  
+  --tg-theme-bg-color: var(--background);
+  --tg-theme-text-color: var(--white);
+  --tg-theme-hint-color: var(--white-icon);
+  --tg-theme-button-color: var(--sec);
+  --tg-theme-button-text-color: #ffffff;
+  --tg-theme-secondary-bg-color: var(--background-tertiary);
+}
+
+*::selection {
+  background-color: var(--sec);
+  color: var(--background);
+}
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+  color: var(--white);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Утилиты */
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.card {
+  background-color: var(--background-tertiary);
+  border: 1px solid var(--gray-light);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  border-color: var(--sec);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 202, 81, 0.2);
+}
+
+.button {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button:focus,
+.button:focus-visible,
+.button:active,
+.button:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--sec) 0%, var(--sec-dark) 100%);
+  color: var(--background);
+  box-shadow: 0 4px 12px rgba(0, 202, 81, 0.3);
+  font-weight: 600;
+}
+
+.button-primary:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 202, 81, 0.4);
+  background: linear-gradient(135deg, var(--sec-light) 0%, var(--sec) 100%);
+}
+
+.button-secondary {
+  background: rgba(0, 202, 81, 0.1);
+  color: var(--sec-light);
+  border: 1px solid rgba(0, 202, 81, 0.3);
+}
+
+.button-secondary:hover:not(:disabled) {
+  background: rgba(0, 202, 81, 0.2);
+  border-color: rgba(0, 202, 81, 0.5);
+  transform: translateY(-1px);
+  color: var(--white);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  fill: currentColor;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-light);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sec);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sec) var(--background-secondary);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 202, 81, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 202, 81, 0.6);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.slide-in {
+  animation: slideIn 0.4s ease-out;
+}
+

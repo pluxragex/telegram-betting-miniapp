@@ -1,0 +1,111 @@
+.bet-button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bet-button.has-logo::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  background-image: var(--bet-logo-bg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.12;
+  filter: grayscale(1) contrast(1.15) brightness(1.1);
+  transform: rotate(-8deg) scale(1.15);
+  pointer-events: none;
+}
+
+.bet-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bet-button:hover::before {
+  opacity: 1;
+}
+
+.bet-button > span {
+  position: relative;
+  z-index: 1;
+}
+
+.bet-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bet-button-p1 {
+  background: rgba(0, 202, 81, 0.1);
+  color: var(--sec);
+  border: 1px solid rgba(0, 202, 81, 0.3);
+  box-shadow: 0 4px 6px -1px rgba(0, 202, 81, 0.1);
+}
+
+.bet-button-p1:hover:not(:disabled) {
+  background: rgba(0, 202, 81, 0.2);
+  border-color: rgba(0, 202, 81, 0.5);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 202, 81, 0.2);
+}
+
+.bet-button-p2 {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.05) 100%);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+}
+
+.bet-button-p2:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(239, 68, 68, 0.15) 100%);
+  border-color: rgba(239, 68, 68, 0.5);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.2);
+}
+
+.bet-button-side {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.bet-button-coefficient {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.bet-button-potential-win {
+  font-size: 11px;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+}
+
+.bet-button-p1 .bet-button-potential-win-value {
+  color: var(--sec);
+  font-weight: 700;
+}
+
+.bet-button-p2 .bet-button-potential-win-value {
+  color: #ef4444;
+  font-weight: 700;
+}
+

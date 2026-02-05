@@ -1,0 +1,159 @@
+.confirm-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.confirm-modal-content {
+  background: var(--background-tertiary);
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 400px;
+  width: 90%;
+  border: 1px solid var(--gray-light);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out;
+  text-align: center;
+}
+
+.confirm-modal-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.confirm-modal-icon.danger {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.1) 100%);
+  color: #ef4444;
+  border: 2px solid rgba(239, 68, 68, 0.3);
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.3);
+}
+
+.confirm-modal-icon.warning {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.1) 100%);
+  color: #f59e0b;
+  border: 2px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+}
+
+.confirm-modal-icon.info {
+  background: rgba(0, 202, 81, 0.15);
+  color: var(--sec);
+  border: 2px solid rgba(0, 202, 81, 0.3);
+  box-shadow: 0 0 30px rgba(0, 202, 81, 0.3);
+}
+
+.confirm-modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+
+.confirm-modal-message {
+  font-size: 16px;
+  color: var(--white-icon);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.confirm-modal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.confirm-modal-cancel,
+.confirm-modal-confirm {
+  flex: 1;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.confirm-modal-cancel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.confirm-modal-cancel:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
+  transform: translateY(-1px);
+}
+
+.confirm-modal-confirm {
+  color: var(--background);
+  box-shadow: 0 4px 12px rgba(0, 202, 81, 0.3);
+}
+
+.confirm-modal-confirm.danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.confirm-modal-confirm.danger:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+  transform: scale(1.02);
+}
+
+.confirm-modal-confirm.warning {
+  background: linear-gradient(135deg, var(--accent-orange) 0%, #e55a00 100%);
+  box-shadow: 0 4px 12px rgba(251, 99, 8, 0.3);
+}
+
+.confirm-modal-confirm.warning:hover {
+  background: linear-gradient(135deg, #e55a00 0%, #cc4f00 100%);
+  box-shadow: 0 6px 20px rgba(251, 99, 8, 0.4);
+  transform: scale(1.02);
+}
+
+.confirm-modal-confirm.info {
+  background: linear-gradient(135deg, var(--sec) 0%, var(--sec-dark) 100%);
+}
+
+.confirm-modal-confirm.info:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 24px rgba(0, 202, 81, 0.4);
+  background: linear-gradient(135deg, var(--sec-light) 0%, var(--sec) 100%);
+}
+
+.confirm-modal-content input.edit-name-input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.confirm-modal-content input.edit-name-input:focus {
+  outline: none;
+  border-color: var(--sec);
+  background: rgba(0, 202, 81, 0.05);
+  box-shadow: 0 0 0 3px rgba(0, 202, 81, 0.15);
+}

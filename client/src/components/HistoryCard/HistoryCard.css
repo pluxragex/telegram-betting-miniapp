@@ -1,0 +1,129 @@
+.history-card {
+  background: var(--background-tertiary);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--gray-light);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.history-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--sec) 0%, var(--sec-light) 50%, var(--sec) 100%, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.history-card:hover::before {
+  opacity: 1;
+}
+
+.history-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 202, 81, 0.2);
+  border-color: var(--sec);
+}
+
+.history-card-win {
+  border-color: rgba(0, 202, 81, 0.4);
+}
+
+.history-card-lose {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.history-card-pending {
+  border-color: var(--gray-lighter);
+}
+
+.history-card-refunded {
+  border-color: rgba(251, 99, 8, 0.4);
+}
+
+.history-card-match {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.history-card-team {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+  text-align: center;
+  letter-spacing: -0.01em;
+  transition: all 0.3s ease;
+}
+
+.history-card-team.winner {
+  color: var(--sec);
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 202, 81, 0.3);
+}
+
+.history-card-team.loser {
+  color: #ef4444;
+  opacity: 0.6;
+}
+
+.history-card-vs {
+  margin: 0 16px;
+  font-size: 14px;
+  color: var(--tg-theme-hint-color, #a0a5b8);
+  font-weight: 600;
+}
+
+.history-card-bet-info {
+  text-align: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.history-card-bet-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.history-card-bet-text {
+  font-size: 14px;
+  color: var(--tg-theme-hint-color, #a0a5b8);
+}
+
+.history-card-coefficient {
+  font-size: 14px;
+  color: var(--tg-theme-hint-color, #a0a5b8);
+}
+
+.coefficient-value {
+  font-weight: 700;
+  color: var(--sec-light);
+  font-size: 16px;
+  text-shadow: 0 0 10px rgba(0, 202, 81, 0.5);
+}
+
+.history-card-win-amount {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sec);
+  margin-top: 8px;
+}
+
+.history-card-refunded {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-orange);
+  margin-top: 8px;
+}
