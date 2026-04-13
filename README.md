@@ -33,7 +33,7 @@ The backend is split into focused modules (`auth`, `users`, `bets`, `matches`, `
 
 ### 1) Clone repository
 ```bash
-git clone <YOUR_REPOSITORY_URL>
+git clone https://github.com/pluxragex/telegram-betting-miniapp.git
 cd telegram-betting-miniapp
 ```
 
