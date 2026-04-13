@@ -1,106 +1,139 @@
-# Cortez Masters — Telegram Mini App
+# Telegram Betting
+> A full Telegram Mini App for community tournaments and betting: matches, odds, rankings, rewards, bonus codes, and an admin panel.  
+> The project is under active development.
 
-Полноценный Telegram Mini App для соревнований и ставок внутри комьюнити: матчи, коэффициенты, рейтинг, призы, бонус‑коды и админ‑панель. Репозиторий монорепозитория: фронтенд на React (Vite) и бэкенд на NestJS.
+## What's unique?
+The app combines user betting flows and Telegram-native onboarding in a single product: Telegram WebApp authentication, channel subscription checks, live match feeds, ranking rewards, and moderation tools.  
+The backend unifies API endpoints, real-time updates, Telegram bot integration, and migration-based data evolution in one modular NestJS service.
 
-## Возможности
-- Авторизация через Telegram WebApp (`initData`), проверка подписки на канал.
-- Ленты матчей по группам с коэффициентами и ставками.
-- История ставок, статусы (win/lose/refunded).
-- Рейтинг пользователей с призами.
-- Ежедневный бонус и промокоды (bonus codes).
-- Админ‑панель: управление призами, настройками рейтинга, бонус‑кодами, матчами и пользователями.
-- Реальное время через Socket.IO.
-- Интеграция с Telegram Bot API (бот и уведомления).
+## What technologies are used?
+> [!WARNING]
+> Below are the key technologies and infrastructure dependencies of the project.
 
-## Стек
-- Frontend: React 18, Vite, TypeScript, React Router, Socket.IO client.
-- Backend: NestJS 10, TypeORM, SQLite, Socket.IO, Telegram Bot API, Sharp.
+### Frontend (`client`)
+* **React 18 + TypeScript**
+* **Vite**
+* **React Router**
+* **Socket.IO Client**
+* **ESLint**
 
-## Архитектура
-- `client/` — SPA для Telegram WebApp.
-- `server/` — REST API + WebSocket шлюз + Telegram‑бот + база данных.
-- База данных по умолчанию: SQLite (`database.sqlite`). Миграции лежат в `server/src/database/migrations`.
+### Backend (`server`)
+* **NestJS 10**
+* **TypeORM + SQLite**
+* **Socket.IO**
+* **Telegram Bot API (`node-telegram-bot-api`)**
+* **Sharp**
+* **NestJS Throttler**
 
-## Быстрый старт (локально)
+## Why this architecture?
+Separation into `client` and `server` allows Telegram UI logic and backend business logic to evolve independently, which simplifies scaling and release flow.  
+The backend is split into focused modules (`auth`, `users`, `bets`, `matches`, `groups`, `history`, `prizes`, `bonus-codes`, `admin`, `realtime`, `bot`) to keep domain boundaries clear and maintenance predictable.
 
-### 1) Бэкенд
+## How can I run it locally?
+
+### 1) Clone repository
+```bash
+git clone <YOUR_REPOSITORY_URL>
+cd telegram-betting-miniapp
+```
+
+### 2) Install dependencies
+```bash
+cd client && npm install
+cd ../server && npm install
+```
+
+### 3) Configure environment
 ```bash
 cd server
 cp env.example .env
-npm install
-npm run start:dev
 ```
 
-### 2) Фронтенд
 ```bash
-cd client
+cd ../client
 cp env.example .env
-npm install
-npm run dev
 ```
 
-По умолчанию фронтенд ходит в `VITE_API_URL=/api`. Для локальной разработки можно указать `http://localhost:3000` (или другой порт, на котором работает сервер).
+Fill in the required values in `.env` files:
+- server: Telegram bot settings, app URL, admin Telegram IDs, and channel IDs
+- client: `VITE_API_URL` (default `/api`, or `http://localhost:3000` for local API access)
 
-## Переменные окружения
-
-### Server (.env)
-- `TELEGRAM_BOT_TOKEN` — токен бота.
-- `TELEGRAM_MINI_APP_URL` — URL мини‑приложения.
-- `TELEGRAM_BOT_USERNAME` — юзернейм бота.
-- `DATABASE_PATH` — путь к базе (по умолчанию `database.sqlite`).
-- `PORT` — порт сервера (в `env.example` указан `3000`; если не задан, используется `4000`).
-- `NODE_ENV` — окружение (`development`/`production`).
-- `ADMIN_TELEGRAM_IDS` — список Telegram ID админов (через запятую).
-- `TELEGRAM_CHANNEL_ID` — канал для проверки подписки.
-- `TELEGRAM_CHANNEL_NEWS_ID` — канал для новостей.
-
-### Client (.env)
-- `VITE_API_URL` — базовый URL API.
-
-## Скрипты
-
-### Client
-- `npm run dev` — запуск Vite dev‑сервера.
-- `npm run build` — сборка фронтенда.
-- `npm run preview` — предпросмотр сборки.
-- `npm run lint` — линтер.
-
-### Server
-- `npm run start:dev` — запуск NestJS в режиме watch.
-- `npm run build` — сборка.
-- `npm run start:prod` — запуск собранного приложения.
-- `npm run migration:run` — применение миграций.
-- `npm run migration:revert` — откат последней миграции.
-
-## Миграции базы данных
+### 4) Prepare database
 ```bash
 cd server
 npm run migration:run
 ```
 
-## Продакшн и деплой
+### 5) Start development mode
 
-### Сборка
 ```bash
+# backend
 cd server
-npm install
+npm run start:dev
+```
+
+```bash
+# frontend
+cd client
+npm run dev
+```
+
+## Available functionality
+
+### Authentication & Telegram integration
+* Telegram WebApp auth via `initData`
+* Telegram channel subscription validation
+* Telegram bot integration for app-related flows
+* Basic anti-abuse throttling guards
+
+### Betting & match flow
+* Match feeds grouped by tournament/group context
+* Betting on matches with odds
+* Bet status lifecycle (`win`, `lose`, `refunded`)
+* User betting history
+
+### Rewards & progression
+* User ranking and leaderboard mechanics
+* Prize management
+* Daily bonus support
+* Bonus code activation and usage tracking
+
+### Admin panel
+* Managing users, matches, groups, teams, and prizes
+* Ranking settings configuration
+* Bonus code management
+* Administrative moderation and operational endpoints
+
+### Realtime & backend services
+* Live updates over WebSocket (Socket.IO)
+* Modular domain services in NestJS
+* TypeORM migrations for schema evolution
+* Optional PM2 ecosystem config (`server/ecosystem.config.js`)
+
+## Testing & quality
+
+### Frontend
+```bash
+cd client
+npm run lint
 npm run build
 ```
 
-### Запуск
-```bash
-node dist/main.js
-```
-
-### PM2 (опционально)
-В репозитории есть `server/ecosystem.config.js`:
+### Backend
 ```bash
 cd server
-pm2 start ecosystem.config.js
+npm run lint
+npm run test
+npm run test:cov
 ```
 
-## Структура репозитория
-- `client/` — фронтенд (Telegram WebApp).
-- `server/` — бэкенд, база, миграции, WebSocket.
-- `server/src/modules/` — доменные модули (bets, matches, groups, prizes, bonus‑codes, admin, realtime и т.д.).
-- `server/src/auth/` — Telegram‑аутентификация.
+## Project structure
+```text
+client/   # React + Vite + TypeScript Telegram WebApp frontend
+server/   # NestJS + TypeORM backend API, Telegram bot integration, WebSocket, migrations
+```
+
+## Notes
+> [!NOTE]
+> The app depends on Telegram infrastructure and bot configuration.  
+> For local and production environments, make sure bot token, mini app URL, channel identifiers, and runtime environment variables are configured correctly before launch.
